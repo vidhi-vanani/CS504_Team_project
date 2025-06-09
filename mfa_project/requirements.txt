@@ -1,0 +1,11 @@
+flask
+flask-bcrypt
+flask-jwt-extended
+flask-mail
+pymongo
+pyotp
+qrcode
+opencv-python
+face-recognition
+dlib
+numpy
