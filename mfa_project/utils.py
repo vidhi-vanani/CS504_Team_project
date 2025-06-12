@@ -31,9 +31,7 @@ def generate_qr(username):
     """Generate a TOTP secret & QR Code"""
     secret = pyotp.random_base32()  # generate once per user
     totp = pyotp.TOTP(secret)
-
     qr_uri = totp.provisioning_uri(username, issuer_name="SecureAuth")
     qr = qrcode.make(qr_uri)
     qr.save(f"static/{username}_qr.png")
-
     return secret, f"/static/{username}_qr.png"

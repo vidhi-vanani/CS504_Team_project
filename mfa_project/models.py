@@ -1,8 +1,11 @@
 from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
-import pymongo
 
-client = pymongo.MongoClient("mongodb+srv://tejasreekokkanti20:Dhanama123@506tp.evuyp7x.mongodb.net/?retryWrites=true&w=majority&appName=506TP")
+# Use environment variable for MongoDB URI for security
+import os
+MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://tejasreekokkanti20:Dhanama123@506tp.evuyp7x.mongodb.net/?retryWrites=true&w=majority&appName=506TP")
+
+client = MongoClient(MONGO_URI)
 db = client["mfa_db"]
 users = db["users"]
 bcrypt = Bcrypt()
@@ -15,7 +18,8 @@ def create_user(username, email, password):
         "email": email,
         "password_hash": hashed_password,
         "totp_secret": None,
-        "face_encoding": None
+        "face_encoding": None,
+        "email_otp": None  # Add this field for clarity
     })
 
 def find_user(username):
