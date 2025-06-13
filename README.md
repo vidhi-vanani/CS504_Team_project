@@ -66,7 +66,7 @@ npm install
 ### Configure config.py
 Edit the `config.py` file with your email credentials and MongoDB connection.
 
-# config.py
+## config.py
 
 MONGO_URI = `'mongodb://localhost:27017/mfa_project' ` # Local Mongo or Atlas URI
 SECRET_KEY = 'your_secret_key_here'
